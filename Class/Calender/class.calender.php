@@ -11,6 +11,8 @@ class SI_Calender{
 
 	private $prev_btn;
 	private $next_btn;
+	private $blank_prev_date = false;
+	private $blank_next_date = false;
 
 
 
@@ -29,6 +31,12 @@ class SI_Calender{
 	}
 
 	function get_week_title(){ return $this->week_title; }
+
+	function set_blank($bool = false){ $this->blank_prev_date = $this->blank_next_date = $bool; }
+	function set_prev_blank($bool = false){ $this->blank_prev_date = $bool; }
+	function set_next_blank($bool = false){ $this->blank_next_date = $bool; }
+
+	
 
 	function set_title_format($format){ $this->title_format = $format; }
 
@@ -100,7 +108,18 @@ class SI_Calender{
 		$html .=				"<tr class='date'>";
 		
 		// 빈칸 추가
-		for ($i = 0; $i < $first_date->startNum(); $i++) { $html .= '<td class="mini blank"></td>'.PHP_EOL; }
+		for ($i = 0; $i < $startnum =$first_date->startNum(); $i++) { 
+			$minus_weektext = "";
+			$minus_day = "";
+			if($this->blank_prev_date){
+				$minus_date		= new Si_DateTime( $first_date->diffDay( -1 * ( $startnum - $i) ) ) ;
+				$minus_day		= "<p class='daynum'>{$minus_date->day()}</p>";
+				$minus_weektext = " ".strtolower( $minus_date->weekShotText() );
+			}
+
+			$html .= "<td class='mini blank{$minus_weektext}'>{$minus_day}</td>".PHP_EOL; 
+			
+		}
 
 		
 		// 일 추가
@@ -159,8 +178,16 @@ class SI_Calender{
 		}
 
 		if($last_weekNum < 6){
+			if($this->blank_next_date){ $last_date = new SI_DateTime( $change->lastDate() );}
 			for ($i = 0; $i < $last_weekNum && $last_weekNum < 6; $i++) {
-				$html .= "<td class='mini blank'></td>".PHP_EOL;
+				$plus_weektext = "";
+				$plus_day = "";
+				if($this->blank_next_date){
+					$plus_date		= new Si_DateTime( $last_date->diffDay( $i + 1)  ) ;
+					$plus_day		= "<p class='daynum'>".sprintf("%d", $plus_date->day())."</p>";
+					$plus_weektext	= " ".strtolower( $plus_date->weekShotText() );
+				}
+					$html .= "<td class='mini blank{$plus_weektext}'>{$plus_day}</td>".PHP_EOL; 
 			}
 			$html .= "</tr>".PHP_EOL;
 		}

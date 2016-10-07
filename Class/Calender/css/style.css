@@ -4,7 +4,8 @@
 	width:100%;
 	font-size:13px;
 }
-
+	
+	/* Calender HEADER */
 	.cal_wrapper .cal_navi{
 		position:relative;
 	}
@@ -22,11 +23,11 @@
 			display: block;
 			margin: 0 auto;
 			text-align: center;
-			width: 100%;
-			lefT: 0;
+			width: 80%;
+			left: 10%;
 		}
-		.cal_navi #btn_prev_wrap{ float:left; }
-		.cal_navi #btn_next_wrap{ float:right; }
+		.cal_navi #btn_prev_wrap{ float:left; width:10%;}
+		.cal_navi #btn_next_wrap{ float:right; width:10%;}
 	
 	.cal_wrapper .caltable{width:100%;}
 
@@ -48,7 +49,9 @@
 		.cal_week_wrapper .thu{}
 		.cal_week_wrapper .fri{}
 		.cal_week_wrapper .sat{color:blue;}
+	
 
+	/* Calender BODY */
 	.cal_wrapper .cal_days_wrapper .cal_days{}
 		.cal_days_wrapper{
 			font-size:1.2em;
@@ -57,10 +60,21 @@
 		.cal_days_wrapper .cal_days .date{}
 			.cal_days .date .daynum{text-align:center;}
 
-		.cal_days_wrapper .sun{color:red;}
-		.cal_days_wrapper .mon{}
-		.cal_days_wrapper .thu{}
-		.cal_days_wrapper .wed{}
-		.cal_days_wrapper .thu{}
-		.cal_days_wrapper .fri{}
-		.cal_days_wrapper .sat{color:blue;}
+			.cal_days .date .mini{ color:#555;}
+			.cal_days .date .mini.blank{color:#ddd;}
+
+			.cal_days .date .sun{color:red;}
+			.cal_days .date .mon{}
+			.cal_days .date .thu{}
+			.cal_days .date .wed{}
+			.cal_days .date .thu{}
+			.cal_days .date .fri{}
+			.cal_days .date .sat{color:blue;}
+
+			.cal_days .date .sun.blank{color:#faa;}
+			.cal_days .date .mon.blank{}
+			.cal_days .date .thu.blank{}
+			.cal_days .date .wed.blank{}
+			.cal_days .date .thu.blank{}
+			.cal_days .date .fri.blank{}
+			.cal_days .date .sat.blank{color:#aaf;}
