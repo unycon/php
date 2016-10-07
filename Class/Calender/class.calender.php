@@ -192,10 +192,6 @@ class SI_Calender{
 			
 			if( ($day + 1) ==  $change->lastDay()){$last_weekNum = (6 - $vDate->weekNum());} // end loof
 		}
-
-	
-
-
 $html  = "<div class='cal_wrapper'>";
 $html .=	"<div class='cal_navi'>";
 $html .=		"<span class='cal_navi_date title'>".$change->format($this->title_format)."</span>";
@@ -210,16 +206,15 @@ $html .=		"</table>";
 $html .=	"</div>";
 			// --- Week Days
 $html .=	"<div class='cal_days_wrapper'>";
-$html .=	"<table border='0' cellpadding='0' cellspacing='0' class='caltable cal_days'>";
-$html .=		"<tbody>";
-$html .=			$prev_blank_day;
-$html .=			$days_html;
-$html .=			$last_blank_day;
-		
-
-		
-
-		$html .= "</tbody></table></div></div>";
+$html .=		"<table border='0' cellpadding='0' cellspacing='0' class='caltable cal_days'>";
+$html .=			"<tbody>";
+$html .=				$prev_blank_day;
+$html .=				$days_html;
+$html .=				$last_blank_day;
+$html .=			"</tbody>";
+$html .=		"</table>";
+$html .=	"</div>";
+$html .= "</div>";
 		return $html;
 	}
 
