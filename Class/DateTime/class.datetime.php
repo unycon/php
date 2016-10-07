@@ -51,7 +51,7 @@ class SI_DateTime extends DateTime{
 	}
 
 	function firstDate(){ 
-		if($this->firstDay) return $this->firstDate;
+		if($this->firstDate) return $this->firstDate;
 		return $this->format("Y-m")."-1";
 	}
 	
@@ -111,14 +111,14 @@ class SI_DateTime extends DateTime{
 
 	function diffBetween($date) { return intval((strtotime($date) - strtotime($this->get_Date())) / 86400); }
 
-	function get_week_text($timezone, $type="long"){
+	function get_week_text($timezone = "", $type="long"){
 
 		$timetext = array(
-			"Asia/Seoul"=> array(
+			"ko"=> array(
 				"long"	=> array("일요일", "월요일", "화요일","수요일","목요일","금요일","토요일"),
 				"shot"	=> array("일","월", "화","수","목","금","토")
 			),
-			"Asia/Seoul" => array(
+			"en" => array(
 				"long"	=> array("Sunday", "Monday", "Tuesday","Wednesday","Thursday","Friday","Saturday"),
 				"shot"	=> array("Sun", "Mon", "Tue","Wed","Thu","Fri","Sat")
 			)
@@ -126,7 +126,7 @@ class SI_DateTime extends DateTime{
 
 		switch(strtolower($timezone) ){
 			case "ko": case "asia/seoul" : case "seoul" :
-				return $timetext["Asia/Seoul"][$type][$this->weekNum()];
+				return $timetext["ko"][$type][$this->weekNum()];
 				break;
 			case 'en' : case 'america'			 :				case 'english'				:
 			case 'ac' :	case 'america/Rio_branco': case 'al' :	case 'america/Maceio'		:
@@ -143,9 +143,11 @@ class SI_DateTime extends DateTime{
 			case 'rr' :	case 'america/Boa_Vista' : case 'sc' :	case 'america/Sao_Paulo'	:
 			case 'se' :	case 'america/Maceio'	 : case 'sp' :	case 'america/Sao_Paulo'	:
 			case 'to' :	case 'america/Araguaia'	 :
-				return $timetext["America/New_York"][$type][$this->weekNum()];
+				return $timetext["en"][$type][$this->weekNum()];
 				break;
 			default : 
+				return $timetext["en"][$type][$this->weekNum()];
+				break;
 		}
 
 		return false;

@@ -1,0 +1,66 @@
+@charset="UTF-8";
+
+.cal_wrapper{
+	width:100%;
+	font-size:13px;
+}
+
+	.cal_wrapper .cal_navi{
+		position:relative;
+	}
+
+	.cal_wrapper .cal_navi:after{content:"";display:block;clear:both;}
+
+		.cal_navi .cal_navi_date, .cal_navi #btn_prev_wrap, .cal_navi #btn_next_wrap{
+			font-size:1.7em;
+			line-height:3em;
+			margin:0 auto; padding:0 auto;
+		}
+		
+		.cal_navi .cal_navi_date{
+		    position: absolute;
+			display: block;
+			margin: 0 auto;
+			text-align: center;
+			width: 100%;
+			lefT: 0;
+		}
+		.cal_navi #btn_prev_wrap{ float:left; }
+		.cal_navi #btn_next_wrap{ float:right; }
+	
+	.cal_wrapper .caltable{width:100%;}
+
+	.cal_wrapper .cal_week_wrapper .cal_week{}
+
+		.cal_week_wrapper{
+			font-size:1.5em;
+			line-height:2em;
+			border-bottom:2px solid #ccc;
+			-webkit-box-sizing:border-box;-moz-box-sizing:border-box;-ms-box-sizing:border-box;-o-box-sizing:border-box;box-sizing:border-box;
+		}
+
+		.cal_week_wrapper .cal_week .date_list{}
+
+		.cal_week_wrapper .sun{color:red;}
+		.cal_week_wrapper .mon{}
+		.cal_week_wrapper .thu{}
+		.cal_week_wrapper .wed{}
+		.cal_week_wrapper .thu{}
+		.cal_week_wrapper .fri{}
+		.cal_week_wrapper .sat{color:blue;}
+
+	.cal_wrapper .cal_days_wrapper .cal_days{}
+		.cal_days_wrapper{
+			font-size:1.2em;
+			line-height:1em;
+		}
+		.cal_days_wrapper .cal_days .date{}
+			.cal_days .date .daynum{text-align:center;}
+
+		.cal_days_wrapper .sun{color:red;}
+		.cal_days_wrapper .mon{}
+		.cal_days_wrapper .thu{}
+		.cal_days_wrapper .wed{}
+		.cal_days_wrapper .thu{}
+		.cal_days_wrapper .fri{}
+		.cal_days_wrapper .sat{color:blue;}
