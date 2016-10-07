@@ -14,25 +14,30 @@
 include_once("../DateTime/class.datetime.php");
 include_once("./class.calender.php");
 
-$calender = new SI_Calender(); ?>
+$calender = new SI_Calender(); 
+$calender->set_title_format("Y년 m월");
+$calender->set_week_title(array("일","월","화","수","목","금","토"));
+$calender->set_blank(false);
+	//$calender->set_prev_blank(true);
+	//$calender->set_next_blank(true);
+$calender->absolute_row(true);
+?>
 
 <style>
-	.box{width:500px; padding:20px; float:left;}
+	body{width:1280px; margin:0 auto;}
+	.box{width:30%; padding:20px; float:left;}
 </style>
 
-<div class="box"><?php echo $calender->calender(); ?></div>
+<?php 
+	$view_year = new Si_DateTime("2015-01-01");
+	
 
-<div class="box">
-	<?php 
-		$calender->set_title_format("Y년 m월");
-		$calender->set_week_title(array("일","월","화","수","목","금","토"));
-		$calender->set_blank(true);
-		$calender->set_prev_blank(true);
-		$calender->set_next_blank(true);
-
-		echo $calender->calender(); 
+	for($i = 1; $i <= 12; $i++){ 
+		$diff_year =  $i  - $view_year->month();
+		$view_date = new Si_DateTime( $view_year->diffMonth($diff_year) );
 	?>
-</div>
-
+		<div class="box"><?php echo $calender->calender($view_date->get_date()); ?></div>
+	<?php }
+?>
 </body>
 </html>
